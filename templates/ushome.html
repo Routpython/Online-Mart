@@ -1,0 +1,21 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block common %}
+    {% include 'usermenu.html' %}
+    <br>
+<body>
+<h1 align="center">Welcome To {{ name }} Home</h1>
+<hr>
+<table align="center" >
+        <tr>
+            <th rowspan="5"><img src="{% static 'image/coco_miguel_dante_4k_8k-3840x2160.jpg' %}" width="200" height="200"> </th>
+        </tr>
+    <tr><th>Id No.:{{ data.no }}</th></tr>
+    <tr><th>Name:{{data.name}}</th></tr>
+    <tr><th>Mobile no.:{{data.contact}}</th></tr>
+
+    <tr><th>Email Id :{{data.email}}</th></tr>
+
+    </table>
+    </body>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'common.html' %}
+{% block common %}
+{% include 'mainmenu.html' %}
+    <body id="register">
+<form action="{% url 'register_user' %}" method="post">
+        {% csrf_token %}
+    <br>
+<table align="center">
+    <tr>
+        <th>
+            <div style="font-family: 'Marcellus SC', serif;color: blue" align="center"><h2>User Register</h2></div>
+            <div class="w-100 mx-auto text-lowercase" >
+                <div class="input-group mb-2 ">
+                <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Name</span>
+                <input type="text" class="form-control" placeholder="Enter Name"  name="t1" required>
+            </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Contact No.</span>
+                    <input type="number" class="form-control" placeholder="Enter Contact no."  name="t2" required maxlength="10">
+
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Email</span>
+                    <input type="email" class="form-control" placeholder="Enter Your Email Id."  name="t3" required >
+
+                </div>
+                        </div>
+                    <div class="input-group mb-3">
+                    <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Password</span>
+                    <input type="password" class="form-control" placeholder="Enter YourPassword"  name="t4" required>
+                    <div class="input-group-append">
+                </div>
+
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary text-center">Register</button>
+            </div>
+        </th>
+    </tr>
+    <tr><th style="color: red ; border: 4px;border-radius: 3px"><h4>
+        {% for x in messages %}
+        {{ x }}
+    {% endfor %}
+    </h4></th></tr>
+</table>
+
+</form></body>
+{% endblock %}

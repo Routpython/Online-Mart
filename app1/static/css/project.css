@@ -1,0 +1,27 @@
+
+#home{
+    background-image: url("orange_slice_fish_water_103418_1280x720.jpg");
+
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+#admin{
+    background-image: url("samsung_galaxy_s9_stock_blue.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+#register{
+    background-image: url("minimal_scenery_4k-3840x2160.jpg");
+     color: white;
+    background-size: auto;
+    background-repeat: no-repeat;
+
+}
+#adhome{
+    background-image: url("orange_spray_water_122728_1280x720.jpg");
+    color: white;
+    font-family: "Arial Black";
+    font-size: 20px;
+}
+

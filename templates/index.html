@@ -1,0 +1,31 @@
+{% extends 'common.html' %}
+
+{% block common %}
+    {% include 'mainmenu.html' %}
+    <body id="home">
+        <table align="center" style="background-color: lightskyblue; font-family: 'Modak', cursive;opacity: inherit " width="380">
+        <tr align="center"><th colspan="2">Showing page :{{ baya}} of {{length }}Pages</th></tr>
+            <tr align="center" style="padding-left:50px"><th ><h2>All Products</h2></th></tr>
+                {% for x in data %}
+            <tr><th rowspan="5"><img src="{{ x.image.url }}" width="150" height="150"></th></tr>
+            <tr><th style="color:mediumvioletred">Id No.:{{ x.idno }}</th></tr>
+            <tr><th>Name :{{ x.pname }}</th></tr>
+            <tr><th>Price :{{ x.price }}</th></tr>
+            <tr><th>Quantity :{{ x.quantity }}</th></tr>
+            {% endfor %}
+
+        <tr><th>{% if data.has_previous %}
+            <a href="{% url 'main' %}?page_no={{ data.previous_page_number }}">Previous</a>
+        {% endif %}</th>
+             <th>{% for x in data.paginator.page_range %}
+        <a href="{% url 'main' %}?page_no={{ x }}">
+            {{ x }}</a>
+             {% endfor %}</th>
+        <th>
+            {% if data.has_next %}
+        <a href="{% url 'main' %}?page_no={{ data.next_page_number }}">Next</a>
+        {% endif %}</th></tr>
+
+        </table>
+    </body>
+{% endblock %}

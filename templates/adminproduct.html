@@ -1,0 +1,80 @@
+{% extends 'common.html' %}
+{% block common %}
+    {% include 'adminmenu.html' %}
+    <br>
+<body>
+<form action="{% url 'addproduct' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center">
+    <tr>
+        <th>
+            <div style="font-family: 'Marcellus SC', serif;color: blue" align="center"><h2>Add Product</h2></div>
+            <div class="w-100 mx-auto text-lowercase" >
+                <div class="input-group mb-2 ">
+                <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Name</span>
+                <input type="text" class="form-control" placeholder="Enter Name"  name="p1" required>
+            </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Price</span>
+                    <input type="number" class="form-control" placeholder="Enter Price"  name="p2" required >
+
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Quantity</span>
+                    <input type="number" class="form-control" placeholder="Enter Quantity"  name="p3" required >
+
+                </div>
+                        </div>
+                    <div class="input-group mb-3">
+                    <span class="input-group-text" style="font-family: 'Marcellus SC', serif;">Product Image</span>
+                    <input type="file" class="form-control" placeholder="Enter Product Image"  name="p4" required>
+                </div>
+           <div>
+                <button type="submit" class="btn btn-primary text-center">Register</button>
+            </div>
+        </th>
+    </tr>
+</table>
+
+<table align="center" border="2" width="700" style="font-family: 'Bitstream Vera Sans';background-color: paleturquoise;">
+    <tr style="background-color: royalblue;height: 20px;color: white;height: 50px" align="center" >
+          <th>No</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        <th>Date</th>
+          <th>Image</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+        {% for x in data %}
+            <tr align="center">
+            <th>{{ x.idno  }}</th>
+          <th>{{x.pname}}</th>
+          <th>{{x.price}}</th>
+          <th>{{x.quantity}}</th>
+            <th>{{ x.pdate }}</th>
+          <th width="200"><img src="{{x.image.url}}" width="200" height="100"></th>
+                <th><a href="{% url 'pupdate' %}?no={{ x.idno }}">Update</a></th>
+            <th><a href="{% url 'pro_delete' %}?no={{ x.idno }}">Delete</a></th>
+            </tr>
+        {% endfor %}
+        <tr><th>{%if data.has_previous %}
+                     <h3><a href="{% url 'addproduct' %}?page_no={{ data.previous_page_number }}">Previous</a></h3>
+        {% endif %}</th>
+        <th>{% for x in data.paginator.page_range %}
+        <a href="{% url 'addproduct' %}?page_no={{ x }}">
+            {{ x }}</a>
+        {% endfor %}</th>
+            <th>{% if data.has_next %}
+            <h3><a href="{% url 'addproduct' %}?page_no={{ data.next_page_number }}">Next</a></h3>
+
+            {% endif %}
+        </th></tr>
+
+</table>
+</form>
+</body>
+
+{% endblock %}

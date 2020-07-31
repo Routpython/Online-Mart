@@ -1,0 +1,41 @@
+{% extends 'common.html' %}
+{% block common %}
+    {% include 'adminmenu.html' %}
+    <br>
+<body>
+
+<table align="center" border="2" width="700">
+    <tr style="color: red;background-color: lightskyblue;height: 50px" align="center" ><th width="200">Id No.</th>
+        <th width="300">Name</th>
+        <th width="200">Contact</th>
+        <th width="500">Email</th>
+        <th width="200">Password</th>
+        <th width="200">Status</th>
+    </tr>
+    {% for x in data %}
+    <tr align="center">
+    <th>{{ x.no }}</th>
+    <th>{{ x.name }}</th>
+    <th>{{ x.contact }}</th>
+    <th>{{ x.email }}</th>
+    <th>{{ x.password}}</th>
+    <th>{{ x.status }}</th>
+    </tr>
+    {% endfor %}
+    <tr><th>
+        {% if data.has_previous %}
+        <a href="{% url 'adminuser' %}?page_no={{ data.previous_page_number }}">Previous</a>
+            {%  endif %}</th>
+            <th colspan="4" style="padding-left: 180px">{% for x in data.paginator.page_range %}
+            <a href="{% url 'adminuser' %}?page_no={{ x }}">{{ x }}</a>
+            {% endfor %}</th>
+
+
+         <th>
+             {% if data.has_next %}
+        <a href="{% url 'adminuser' %}?page_no={{ data.next_page_number }}">Next</a>
+        {% endif %}
+         </th></tr>
+</table>
+    </body>
+{% endblock %}

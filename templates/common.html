@@ -1,0 +1,31 @@
+{% load static %}
+<html>
+<head>
+    <title>Bapu Mart</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Modak&display=swap" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<table style="height: 80px">
+    <tr><th>
+        <img src="{% static 'image/pixars_up.jpg' %}"  alt="Cinque Terre" width="204" ></th>
+        <th style="font-family: 'Modak', cursive;padding-left: 220px ; background-color: greenyellow; width: 1000px"><h1><font size="65" color="red">BAPU MART</font></h1></th>
+    </tr>
+</table>
+</body>
+   {% block common %}
+        {% endblock %}
+<div align="center" style="background-color: royalblue"><font color="white">Copyright @ Patitapaban Rout</font></div>
+
+
+</html>

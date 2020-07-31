@@ -1,0 +1,22 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block common %}
+    {% include 'adminmenu.html' %}
+    <br>
+<form action="{% url 'pro_update_save' %}" method="post" enctype="multipart/form-data">
+{%csrf_token %}
+<table align="center" border="2" width="700" style="font-family: 'Bitstream Vera Sans';background-color: paleturquoise;">
+    <tr style="background-color: royalblue;height: 20px;color: white;height: 50px" align="center" >
+          <th>No<input type="number" name="t1" readonly value="{{ data.idno }}"></th>
+          <th>Name<input type="text" name="t2"  value="{{ data.pname}}"></th>
+          <th>Price<input type="number" name="t3" value="{{ data.price }}"></th>
+          <th>Quantity<input type="number" name="t4"  value="{{ data.quantity }}"></th>
+        <th><input type="file" name="t5" required>
+               </th>
+
+
+        <th><button type="submit">Update</button></th>
+    </tr>
+</table>
+</form>
+{% endblock %}

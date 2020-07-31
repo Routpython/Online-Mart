@@ -1,0 +1,19 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block common %}
+    {% include 'usermenu.html' %}
+    <br>
+    <body>{{ name }}
+    <form method="post" action="{% url 'save_update' %}">
+        {% csrf_token %}
+        <table align="center" border="2">
+        <tr><th>Id  No :<input type="number" name="t1" value="{{ data.no }}"></th></tr>
+        <tr><th>Name :<input type="text" name="t2" value="{{data.name }}"></th></tr>
+        <tr><th>Contact :<input type="tel" name="t3" value="{{ data.contact }}" aria-readonly="true"></th></tr>
+        <tr><th>Email id. :<input type="email" name="t4" value="{{ data.email }}"></th></tr>
+        <tr><th>Password :<input type="password" name="t5" value="{{ data.password }}"></th></tr>
+        <tr><th><button type="submit">Update</button></th></tr>
+    </table>
+    </form>
+    </body>
+{% endblock %}
